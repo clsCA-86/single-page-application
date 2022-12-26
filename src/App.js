@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import About from "./About";
 import Contact from "./Contact";
 import Pizza from "./Pizza";
@@ -8,22 +8,12 @@ import * as yup from "yup";
 import "./index.css";
 import "./App";
 
-const defaultValues = {
-  name: "",
-  size: "",
-  topping1: false,
-  topping2: false,
-  topping3: false,
-  instructions: "",
-};
 
 const schema = yup.object().shape({
   user: yup.string().required("name must be atleast 2 characters"),
 });
 
 const App = () => {
-  const [formValues, setFormValues] = useState(defaultValues);
-
   return (
     <div className="App">
       <h1>BloomTech Eats</h1>

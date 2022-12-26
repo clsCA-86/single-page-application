@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+const defaultValues = {
+  name: "",
+  size: "",
+  topping1: false,
+  topping2: false,
+  topping3: false,
+  instructions: "",
+};
 
 const Pizza = () => {
+  const [formValues, setFormValues] = useState(defaultValues);
+  const handleChange = (e) => {
+    setFormValues(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues);
+  };
+
+  useEffect(() => {
+    console.log(formValues);
+  }, [formValues]);
+
   return (
     <div>
       <h1>Order Pizza!</h1>
       <label htmlFor="pizza">
         <h3>Choice of Size:</h3>
       </label>
-      <form id="pizza-form">
+      <form id="pizza-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="pizza-form">
           <select name="order-pizza">
             <option value="small">small</option>
@@ -38,11 +61,9 @@ const Pizza = () => {
           id="fname"
           name="fname"
           placeholder="Enter First Name"
-          onChange={(e) => setFormValues(e.target.value)}
+          onChange={(e) => handleChange(e)}
         />
-        <Link to="/pizza" id="order-pizza">
-          <button>Click!</button>
-        </Link>
+        <button>Click!</button>
       </form>
     </div>
   );
