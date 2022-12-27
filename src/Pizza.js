@@ -82,7 +82,7 @@ const Pizza = () => {
           id="fname"
           name="fname"
           placeholder="Enter First Name"
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
         />
         <button>Click!</button>
       </form>
