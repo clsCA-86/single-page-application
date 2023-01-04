@@ -11,14 +11,13 @@ const defaultValues = {
 
 const Pizza = () => {
   const [formValues, setFormValues] = useState(defaultValues);
-  const handleChange = (e) => {
-    this.setFormValues({ value: e.target.value });
+  const handleChange = (event) => {
+    setFormValues({ ...formValues, [event.target.value]: event.target.value });
   };
 
   const handleSubmit = (e) => {
-    alert(`A name was submitted: ` + this.state.value);
     e.preventDefault();
-    console.log(formValues);
+    console.log(formValues.name);
   };
 
   useEffect(() => {
@@ -26,13 +25,13 @@ const Pizza = () => {
   }, [formValues]);
 
   return (
-    <div>
+    <div className="App">
       {console.log(formValues)}
       <h1>Order Pizza!</h1>
       <label htmlFor="pizza">
         <h3>Pizza Size:</h3>
       </label>
-      <form id="pizza-form">
+      <form onSubmit={(event) => handleSubmit(event)}>
         <label htmlFor="pizza-form">
           <select name="order-pizza">
             <option value="small">small</option>
@@ -48,7 +47,7 @@ const Pizza = () => {
           <input
             id="topping1"
             type="checkbox"
-            value={value}
+            value={formValues.value}
             onChange={(e) => handleChange(e)}
           />
         </label>
@@ -57,7 +56,7 @@ const Pizza = () => {
           <input
             id="topping2"
             type="checkbox"
-            value={value}
+            value={formValues.value}
             onChange={(e) => handleChange(e)}
           />
         </label>
@@ -66,7 +65,7 @@ const Pizza = () => {
           <input
             id="topping3"
             type="checkbox"
-            value={value}
+            value={formValues.value}
             onChange={(e) => handleChange(e)}
           />
         </label>
@@ -81,7 +80,7 @@ const Pizza = () => {
           id="fname"
           name="fname"
           placeholder="Enter First Name"
-          onChange={(event) => handleChange(event)}
+          onChange={(e) => handleChange(e)}
         />
         <button onSubmit={() => handleSubmit()}>Click!</button>
       </form>

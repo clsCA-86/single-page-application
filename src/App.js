@@ -4,14 +4,8 @@ import Contact from "./Contact";
 import Pizza from "./Pizza";
 import Home from "./Home";
 import { Route, Link, Switch } from "react-router-dom";
-import * as yup from "yup";
 import "./index.css";
 import "./App";
-
-
-const schema = yup.object().shape({
-  user: yup.string().required("name must be atleast 2 characters"),
-});
 
 const App = () => {
   return (
