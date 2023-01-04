@@ -12,10 +12,11 @@ const defaultValues = {
 const Pizza = () => {
   const [formValues, setFormValues] = useState(defaultValues);
   const handleChange = (e) => {
-    setFormValues(e.target.value);
+    this.setFormValues({ value: e.target.value });
   };
 
   const handleSubmit = (e) => {
+    alert(`A name was submitted: ` + this.state.value);
     e.preventDefault();
     console.log(formValues);
   };
@@ -26,12 +27,12 @@ const Pizza = () => {
 
   return (
     <div>
-      {console.log({ formValues })}
+      {console.log(formValues)}
       <h1>Order Pizza!</h1>
       <label htmlFor="pizza">
         <h3>Pizza Size:</h3>
       </label>
-      <form id="pizza-form" onSubmit={(e) => handleSubmit(e)}>
+      <form id="pizza-form">
         <label htmlFor="pizza-form">
           <select name="order-pizza">
             <option value="small">small</option>
@@ -43,35 +44,33 @@ const Pizza = () => {
         <h2>Toppings</h2>
 
         <label htmlFor="topping1">
-          topping1:{" "}
+          topping1:
           <input
-            onChange={(event) => {
-              debugger;
-            }}
             id="topping1"
             type="checkbox"
+            value={this.value}
+            onChange={(e) => handleChange(e)}
           />
         </label>
         <label htmlFor="topping2">
-          topping2:{" "}
+          topping2:
           <input
-            onChange={(event) => {
-              debugger;
-            }}
             id="topping2"
             type="checkbox"
+            value={this.value}
+            onChange={(e) => handleChange(e)}
           />
         </label>
         <label htmlFor="topping3">
-          topping3:{" "}
+          topping3:
           <input
-            onChange={(event) => {
-              debugger;
-            }}
             id="topping3"
             type="checkbox"
+            value={this.value}
+            onChange={(e) => handleChange(e)}
           />
         </label>
+
         <h2>Choice of Substitute</h2>
         <p>Choose one Topping per pizza order</p>
         {/*Form input goes Here */}
@@ -82,9 +81,9 @@ const Pizza = () => {
           id="fname"
           name="fname"
           placeholder="Enter First Name"
-          onChange={handleChange}
+          onChange={(event) => handleChange(event)}
         />
-        <button>Click!</button>
+        <button onSubmit={() => handleSubmit()}>Click!</button>
       </form>
     </div>
   );
