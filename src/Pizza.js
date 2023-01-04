@@ -48,7 +48,7 @@ const Pizza = () => {
           <input
             id="topping1"
             type="checkbox"
-            value={this.value}
+            value={value}
             onChange={(e) => handleChange(e)}
           />
         </label>
@@ -57,7 +57,7 @@ const Pizza = () => {
           <input
             id="topping2"
             type="checkbox"
-            value={this.value}
+            value={value}
             onChange={(e) => handleChange(e)}
           />
         </label>
@@ -66,7 +66,7 @@ const Pizza = () => {
           <input
             id="topping3"
             type="checkbox"
-            value={this.value}
+            value={value}
             onChange={(e) => handleChange(e)}
           />
         </label>
