@@ -11,7 +11,11 @@ const defaultValues = {
 
 const Pizza = () => {
   const [formValues, setFormValues] = useState(defaultValues);
+  const [disabled, setDisabled] = useState(true);
+
   const handleChange = (event) => {
+    const { checked, value, name, type } = event.target;
+    const formValues = type === "checkbox" ? checked : value;
     setFormValues({ ...formValues, [event.target.value]: event.target.value });
   };
 
@@ -46,27 +50,33 @@ const Pizza = () => {
           topping1:
           <input
             id="topping1"
-            type="checkbox"
-            value={formValues.value}
+            type="radio"
+            value={formValues.toppin1}
+            name="topping1"
             onChange={(e) => handleChange(e)}
+            checked={formValues.topping1 === "topping1"}
           />
         </label>
         <label htmlFor="topping2">
           topping2:
           <input
             id="topping2"
-            type="checkbox"
-            value={formValues.value}
+            type="radio"
+            value={formValues.topping2}
+            name="topping2"
             onChange={(e) => handleChange(e)}
+            checked={formValues.topping2 === "topping2"}
           />
         </label>
         <label htmlFor="topping3">
           topping3:
           <input
             id="topping3"
-            type="checkbox"
-            value={formValues.value}
+            type="radio"
+            value={formValues.topping3}
+            name="topping3"
             onChange={(e) => handleChange(e)}
+            checked={formValues.topping3 === "topping3"}
           />
         </label>
 
@@ -82,7 +92,9 @@ const Pizza = () => {
           placeholder="Enter First Name"
           onChange={(e) => handleChange(e)}
         />
-        <button onSubmit={() => handleSubmit()}>Click!</button>
+        <button disabled={disabled} onSubmit={() => handleSubmit()}>
+          Click!
+        </button>
       </form>
     </div>
   );
