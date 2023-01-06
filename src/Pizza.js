@@ -11,15 +11,14 @@ const defaultValues = {
 
 const Pizza = () => {
   const [formValues, setFormValues] = useState(defaultValues);
-  const [disabled, setDisabled] = useState(true);
 
   const handleChange = (event) => {
     const { checked, value, name, type } = event.target;
     const formValues = type === "checkbox" ? checked : value;
-    setFormValues({ ...formValues, [event.target.value]: event.target.value });
+    setFormValues({ ...formValues, [name]: formValues });
   };
 
-  const handleSubmit = (e) => {
+  const handleOnClick = (e) => {
     e.preventDefault();
     console.log(formValues.name);
   };
@@ -35,7 +34,7 @@ const Pizza = () => {
       <label htmlFor="pizza">
         <h3>Pizza Size:</h3>
       </label>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onChange={(e) => handleChange(e)}>
         <label htmlFor="pizza-form">
           <select name="order-pizza">
             <option value="small">small</option>
@@ -92,9 +91,7 @@ const Pizza = () => {
           placeholder="Enter First Name"
           onChange={(e) => handleChange(e)}
         />
-        <button disabled={disabled} onSubmit={() => handleSubmit()}>
-          Click!
-        </button>
+        <button onClick={() => handleOnClick()}>Click!</button>
       </form>
     </div>
   );
