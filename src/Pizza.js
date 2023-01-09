@@ -1,100 +1,56 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const defaultValues = {
-  name: "",
-  size: "",
-  topping1: false,
-  topping2: false,
-  topping3: false,
-  instructions: "",
-};
+export default function Pizza(props) {
+  const { values, change, submit, errors, disabled } = props 
 
-const Pizza = () => {
-  const [formValues, setFormValues] = useState(defaultValues);
+  const changeHandler = (evt) => {
+    const { name, checked, value, type } = evt.target 
+    const wantValue = type === "checkbox" ? checked : value; 
+    change(name, wantValue); 
+  }
 
-  const handleChange = (event) => {
-    const { checked, value, name, type } = event.target;
-    const formValues = type === "checkbox" ? checked : value;
-    setFormValues({ ...formValues, [name]: formValues });
-  };
+  const submitHandler = (evt) => { 
+    evt.preventDefault(); 
+    submit();
+  }
 
-  const handleOnClick = (e) => {
-    e.preventDefault();
-    console.log(formValues.name);
-  };
+  return ( 
+    <Form id="pizza-form" onSubmit={submitHandler}> 
+      <label>Your name&nbsp; 
+        <input type="text" id="name-input" name="name" onChange={changeHandler} value={values.name} placeholder="Pepper Pots" /> 
+      </label> 
+        { errors.name && <h5>{errors.name}</h5> } 
 
-  useEffect(() => {
-    console.log(formValues);
-  }, [formValues]);
+      <select id="size-dropdown" name="size" onChange={changeHandler} value={values.size} >
+        <option name="pick-size">Pick your pizza size</option>    
+        <option name="choose-your-size">Choose your size</option>
+        <option name="small">Small</option> 
+        <option name="medium">Medium</option> 
+        <option name="large">Large</option> 
+        <option name="extra-large">Extra Large</option> 
+      </select> 
+      {errors.size && <h5> {errors.size} </h5>}
 
-  return (
-    <div className="App">
-      {console.log(formValues)}
-      <h1>Order Pizza!</h1>
-      <label htmlFor="pizza">
-        <h3>Pizza Size:</h3>
-      </label>
-      <form onChange={(e) => handleChange(e)}>
-        <label htmlFor="pizza-form">
-          <select name="order-pizza">
-            <option value="small">small</option>
-            <option value="medium">medium</option>
-            <option value="large">large</option>
-            <option value="extra-large">extra large</option>
-          </select>
-        </label>
-        <h2>Toppings</h2>
+      <label>Toppings
+        <section id="toppings"> 
+          <label> 
+            <input name="salami" type="checkbox" onChange={changeHandler} checked={values.salami} /> 
+            &nbsp;Salami
+          </label>
+          <label> 
+            <input name="bellpepper" type="checkbox" onChange={changeHandler} checked={values.bellpepper} /> 
+            &nbsp;bellpepper
+          </label> 
+          <label> 
+            <input name="sausage" type="checkbox" onChange={changeHandler} checked={values.sausage} /> 
+            &nbsp;Sausage
+          </label> 
+          <label> 
+            <input name="ham" type="checkbox" onChange={changeHandler} checked={values.ham} /> 
+            &nbsp;Ham
+          </label> 
+          <label htmlFor="special-text">Special Instructions</label> 
+            <input name="special" id="special-text" onChange={changeHandler} value={value.special} />
 
-        <label htmlFor="topping1">
-          topping1:
-          <input
-            id="topping1"
-            type="radio"
-            value={formValues.toppin1}
-            name="topping1"
-            onChange={(e) => handleChange(e)}
-            checked={formValues.topping1 === "topping1"}
-          />
-        </label>
-        <label htmlFor="topping2">
-          topping2:
-          <input
-            id="topping2"
-            type="radio"
-            value={formValues.topping2}
-            name="topping2"
-            onChange={(e) => handleChange(e)}
-            checked={formValues.topping2 === "topping2"}
-          />
-        </label>
-        <label htmlFor="topping3">
-          topping3:
-          <input
-            id="topping3"
-            type="radio"
-            value={formValues.topping3}
-            name="topping3"
-            onChange={(e) => handleChange(e)}
-            checked={formValues.topping3 === "topping3"}
-          />
-        </label>
-
-        <h2>Choice of Substitute</h2>
-        <p>Choose one Topping per pizza order</p>
-        {/*Form input goes Here */}
-
-        <label htmlFor="fname">First Name: </label>
-        <input
-          type="name-input"
-          id="fname"
-          name="fname"
-          placeholder="Enter First Name"
-          onChange={(e) => handleChange(e)}
-        />
-        <button onClick={() => handleOnClick()}>Click!</button>
-      </form>
-    </div>
-  );
-};
-
-export default Pizza;
+          <input type="submit" id="order-button" value="check out" disabled={disabled} /> 
+  </Form>  

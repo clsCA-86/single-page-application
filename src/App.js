@@ -1,40 +1,112 @@
-import React from "react";
-import About from "./About";
-import Contact from "./Contact";
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { Link, Route, useHistory } from "react-router-dom";
 import Pizza from "./Pizza";
 import Home from "./Home";
-import { Route, Link, Switch } from "react-router-dom";
-import "./index.css";
-import "./App";
+import FormOrderSent from "./FormOrderSent";
+import axios from "axios";
+import * as yup from "yup";
+import schema from "./formSchema";
+
+const initialValues = {
+  name: "",
+  size: "",
+  salami: false,
+  bellpepper: false,
+  sausage: false,
+  ham: false,
+  gf: false,
+  special: "",
+};
+
+const initialErrors = {
+  name: "",
+};
 
 const App = () => {
+  const [orders, setOrders] = useState([]);
+  const [orderValues, setOrderValues] = useState(initialValues);
+
+  const [errors, setErrors] = useState(initialErrors);
+  const [disabled, setDisabled] = useState(false);
+
+  const history = useHistory();
+
+  const validation = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => setErrors({ ...errors, [name]: "" }))
+      .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
+  };
+  const changeForm = (name, value) => {
+    validation(name, value);
+    setOrderValues({ ...orderValues, [name]: value });
+  };
+
+  const submitForm = () => {
+    const newOrder = {
+      name: orderValues.name,
+      size: orderValues.size,
+      salami: orderValues.salami,
+      bellpepper: orderValues.bellpepper,
+      sausage: orderValues.sausage,
+      ham: orderValues.ham,
+      cheese:
+        !orderValues.salami &&
+        !orderValues.bellpepper &&
+        !orderValues.sausage &&
+        !orderValues.ham
+          ? true
+          : false,
+      special: orderValues.special,
+      gf: orderValues.gf,
+    };
+
+    axios
+      .post("https://reqres.in/api/orders", newOrder)
+      .then((res) => {
+        setOrders([...orders, res.data]);
+      })
+      .catch((err) => console.error(err));
+
+    history.push("/orders");
+    setOrderValues(initialValues);
+  };
+
+  useEffect(() => {
+    schema.isValid(orderValues).then((valid) => setDisabled(!valid));
+  }, [orderValues]);
+
   return (
-    <div className="App">
-      <h1>BloomTech Eats</h1>;
-      <nav>
-        <ul className="navbar">
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/pizza">Pizza</Link>
-          </li>
-        </ul>
-      </nav>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/pizza" component={Pizza} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/contact" component={Contact} />
-      </Switch>
-      <h2>Build your own Pizza</h2>;
-    </div>
+    <>
+      <section id="header">
+        <h1>BloomTech Eats</h1>
+        <Link to="/" name="headerHome">
+          Home
+        </Link>
+        <Link to="/pizza" id="header-pizza">
+          Order Online!
+        </Link>
+      </section>
+      <Route exact path="/">
+        <Home />
+      </Route>
+
+      <Route exact path="/pizza">
+        <form
+          values={orderValues}
+          change={changeForm}
+          submit={submitForm}
+          errors={errors}
+          disabled={disabled}
+        />
+      </Route>
+
+      <Route path="/order">
+        <FormOrderSent order={orders} />
+      </Route>
+    </>
   );
 };
 
