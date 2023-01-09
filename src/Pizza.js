@@ -15,7 +15,7 @@ export default function Pizza(props) {
   }
 
   return ( 
-    <Form id="pizza-form" onSubmit={submitHandler}> 
+    <form id="pizza-form" onSubmit={submitHandler}> 
       <label>Your name&nbsp; 
         <input type="text" id="name-input" name="name" onChange={changeHandler} value={values.name} placeholder="Pepper Pots" /> 
       </label> 
@@ -51,6 +51,10 @@ export default function Pizza(props) {
           </label> 
           <label htmlFor="special-text">Special Instructions</label> 
             <input name="special" id="special-text" onChange={changeHandler} value={value.special} />
-
-          <input type="submit" id="order-button" value="check out" disabled={disabled} /> 
-  </Form>  
+          </label>
+          <input type="submit" id="order-button" value="check out" disabled={disabled} />   
+        </section> 
+      </label>
+    </form> 
+  );
+};
