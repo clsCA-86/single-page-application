@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Link, Route, useHistory } from "react-router-dom";
-import Pizza from "./Pizza";
 import Home from "./Home";
 import FormOrderSent from "./FormOrderSent";
 import axios from "axios";
@@ -23,7 +22,7 @@ const initialErrors = {
   name: "",
 };
 
-const App = () => {
+const function App = (props) => {
   const [orders, setOrders] = useState([]);
   const [orderValues, setOrderValues] = useState(initialValues);
 
@@ -75,24 +74,22 @@ const App = () => {
   };
 
   useEffect(() => {
-    schema.isValid(orderValues).then((valid) => setDisabled(!valid));
-  }, [orderValues]);
-
+    schema.isValid(orderValues).then((valid => setDisabled(!valid)) 
+  }, [orderValues])  
+  
   return (
-    <>
-      <section id="header">
-        <h1>BloomTech Eats</h1>
-        <Link to="/" name="headerHome">
-          Home
-        </Link>
+    <section id="header">
+      <h1>BloomTech Eats</h1>
+      <Link to="/" name="headerHome">
+        Home
+      </Link>
         <Link to="/pizza" id="header-pizza">
-          Order Online!
+        Order Online!
         </Link>
       </section>
       <Route exact path="/">
         <Home />
       </Route>
-
       <Route exact path="/pizza">
         <form
           values={orderValues}
@@ -102,8 +99,8 @@ const App = () => {
           disabled={disabled}
         />
       </Route>
-
-      <Route path="/order">
+      
+      <Route exact path="/order">
         <FormOrderSent order={orders} />
       </Route>
     </>
