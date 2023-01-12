@@ -11,7 +11,7 @@ export default function HomePage(props) {
         />
       </div>
       <Link to="/pizza" id="order-pizza">
-        Order!
+        Order Now!
       </Link>
     </section>
   );
