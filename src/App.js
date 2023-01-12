@@ -6,7 +6,7 @@ import HomePage from "./HomePage";
 import OrderSent from "./OrderSent";
 import axios from "axios";
 import * as yup from "yup";
-import schema from "./formSchema";
+import schema from "./formSchema/schema";
 
 const initialValues = {
   name: "",
@@ -86,6 +86,7 @@ const App = () => {
         <Link to="/" name="headerHome">
           Home
         </Link>
+
         <Link to="/pizza" id="header-pizza">
           Order Pizza Online!
         </Link>
