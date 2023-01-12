@@ -7,7 +7,7 @@ const formSchema = yup.object().shape({
     .required("Name is required for order"),
   size: yup
     .string()
-    .oneOf(["small", "medium", "large", "super"], "Must choose a size")
+    .oneOf(["small", "medium", "large", "extra large"], "Must choose a size")
     .required("Must choose a size"),
   salami: yup.boolean(),
   bellpepper: yup.boolean(),

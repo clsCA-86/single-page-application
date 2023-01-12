@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function FormOrderCard(props) {
+export default function orderCard(props) {
   const { order } = props;
   return (
-    <div className="FormOrderCard">
+    <div className="orderCard">
       <h3>{order.name}</h3>
       <p>
         Pizza size: <strong>{order.size}</strong>

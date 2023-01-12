@@ -1,5 +1,5 @@
 import React from "react";
-import FormOrderCard from "./FormOrderCard";
+import OrderCard from "./OrderCard";
 
 export default function OrderSent(props) {
   const { order } = props;
@@ -9,7 +9,7 @@ export default function OrderSent(props) {
       {!order.length ? (
         <h2>Loading...</h2>
       ) : (
-        order.map((order) => <FormOrderCard order={order} key={order.id} />)
+        order.map((order) => <OrderCard order={order} key={order.id} />)
       )}
     </section>
   );

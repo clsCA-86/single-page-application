@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Pizza(props) {
+export default function Form(props) {
   const { values, change, submit, errors, disabled } = props;
 
   const changeHandler = (evt) => {
@@ -35,8 +35,7 @@ export default function Pizza(props) {
         onChange={changeHandler}
         value={values.size}
       >
-        <option name="pick-size">Pick your pizza size</option>
-        <option name="choose-your-size">Choose your size</option>
+        <option name="choose-your-size">Choose your pizza size</option>
         <option name="small">Small</option>
         <option name="medium">Medium</option>
         <option name="large">Large</option>
