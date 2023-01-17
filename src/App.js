@@ -11,10 +11,10 @@ import schema from "./formSchema/schema";
 const initialValues = {
   name: "",
   size: "",
-  salami: false,
-  bellpepper: false,
-  sausage: false,
-  ham: false,
+  pepperoni: false,
+  veggie: false,
+  meat: false,
+  pineapple: false,
   gf: false,
   special: "",
 };
@@ -49,15 +49,15 @@ const App = () => {
     const newOrder = {
       name: orderValues.name,
       size: orderValues.size,
-      salami: orderValues.salami,
-      bellpepper: orderValues.bellpepper,
-      sausage: orderValues.sausage,
-      ham: orderValues.ham,
+      pepperoni: orderValues.pepperoni,
+      veggie: orderValues.veggie,
+      meat: orderValues.meat,
+      pineapple: orderValues.pineapple,
       cheese:
-        !orderValues.salami &&
-        !orderValues.bellpepper &&
-        !orderValues.sausage &&
-        !orderValues.ham
+        !orderValues.pepperoni &&
+        !orderValues.veggie &&
+        !orderValues.meat &&
+        !orderValues.pineapple
           ? true
           : false,
       special: orderValues.special,
@@ -82,13 +82,12 @@ const App = () => {
   return (
     <>
       <section id="header">
-        <h1>BloomTech Eats</h1>
+        <h1>Lambda Eats</h1>
         <Link to="/" name="headerHome">
           Home
         </Link>
-
         <Link to="/pizza" id="header-pizza">
-          Order Pizza Online!
+          Order Online!
         </Link>
       </section>
 
