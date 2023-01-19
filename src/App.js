@@ -95,11 +95,11 @@ const App = () => {
 
       <Route path="/pizza">
         <PizzaForm
-        // values={orderValues}
-        // change={changeForm}
-        // submit={submitForm}
-        // errors={errors}
-        // disabled={disabled}
+          values={orderValues}
+          change={changeForm}
+          submit={submitForm}
+          errors={errors}
+          disabled={disabled}
         />
       </Route>
 
