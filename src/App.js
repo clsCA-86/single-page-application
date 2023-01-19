@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Link, Route, useHistory } from "react-router-dom";
-import Form from "./Form";
+import PizzaForm from "./Form";
 import HomePage from "./HomePage";
 import OrderSent from "./OrderSent";
 import axios from "axios";
@@ -82,13 +82,11 @@ const App = () => {
   return (
     <>
       <section id="header">
-        <h1>Lambda Eats</h1>
-        <Link to="/" name="headerHome">
+        <h1>BloomTech Eats!</h1>
+        <Link to="/" name="header-Home">
           Home
         </Link>
-        <Link to="/pizza" id="header-pizza">
-          Order Online!
-        </Link>
+        <Link to="/pizza">Order Online!</Link>
       </section>
 
       <Route exact path="/">
@@ -96,12 +94,12 @@ const App = () => {
       </Route>
 
       <Route path="/pizza">
-        <Form
-          values={orderValues}
-          change={changeForm}
-          submit={submitForm}
-          errors={errors}
-          disabled={disabled}
+        <PizzaForm
+        // values={orderValues}
+        // change={changeForm}
+        // submit={submitForm}
+        // errors={errors}
+        // disabled={disabled}
         />
       </Route>
 
