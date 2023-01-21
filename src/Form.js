@@ -1,13 +1,15 @@
 import React from "react";
 
 export default function PizzaForm(props) {
-  const { values, change, submit, errors, disabled } = props;
+  const { size, values, change, submit, errors, disabled } = props;
 
   const onChange = (evt) => {
     const { name, checked, value, type } = evt.target;
     const wantValue = type === "checkbox" ? checked : value;
     change(name, wantValue);
   };
+
+  // focus on why that test gave me this error message
 
   const onSubmit = (evt) => {
     evt.preventDefault();
@@ -17,18 +19,27 @@ export default function PizzaForm(props) {
   return (
     <form id="pizza-form" onSubmit={onSubmit}>
       <label>
-        Your Name: &nbsp;
+        Your Name:
         <br />
         <input
+          onChange={(evt) => {
+            console.log(evt.target.value);
+          }}
+          id="name-input"
           type="text"
-          id="fname"
           name="fname"
-          onChange={onChange}
-          value={values.name}
+          value={values.fname}
           placeholder="Pepper Pots"
         />
       </label>
       {errors.name && <h5>{errors.name}</h5>}
+      <br />
+      <select value={size} id="size-dropdown" onChange={onChange}>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+        <option value="extra-large">Extra Large</option>
+      </select>
 
       <label>Toppings:</label>
       <section id="toppings">
@@ -77,7 +88,7 @@ export default function PizzaForm(props) {
           />
           Glutten Free:
         </label>
-
+        <br />
         <label>Special Instructions: </label>
         <input
           name="special"
@@ -93,6 +104,7 @@ export default function PizzaForm(props) {
           disabled={disabled}
         />
       </section>
+      <button></button>
     </form>
   );
 }
