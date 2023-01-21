@@ -12,7 +12,7 @@ const initialValues = {
   name: "",
   size: "",
   pepperoni: false,
-  veggie: false,
+  veggies: false,
   meat: false,
   pineapple: false,
   gf: false,
@@ -50,12 +50,12 @@ const App = () => {
       name: orderValues.name,
       size: orderValues.size,
       pepperoni: orderValues.pepperoni,
-      veggie: orderValues.veggie,
+      veggie: orderValues.veggies,
       meat: orderValues.meat,
       pineapple: orderValues.pineapple,
       cheese:
         !orderValues.pepperoni &&
-        !orderValues.veggie &&
+        !orderValues.veggies &&
         !orderValues.meat &&
         !orderValues.pineapple
           ? true
@@ -95,10 +95,10 @@ const App = () => {
 
       <Route path="/pizza">
         <PizzaForm
-          values={orderValues}
+          values={setOrderValues}
           change={changeForm}
           submit={submitForm}
-          errors={errors}
+          errors={setErrors}
           disabled={disabled}
         />
       </Route>
