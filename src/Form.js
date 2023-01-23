@@ -30,92 +30,82 @@ export default function PizzaForm(props) {
         value={values.fname}
         placeholder="Full Name"
       />
+      <label>Email:</label>
+      <input
+        onChange={(evt) => {
+          console.log(evt.target.value);
+        }}
+        id="email"
+        type="text"
+        name="email"
+        value={values.email}
+        placeholder="Enter your Email"
+      />
       <br />
-      <label>
-        Email:
-        <input
-          onChange={(evt) => {
-            console.log(evt.target.value);
-          }}
-          id="name-input"
-          type="text"
-          name="email"
-          value={values.email}
-          placeholder="Enter your Email"
-        />
-      </label>
-      <br />
+      <h2>Choose Pizza Size:</h2>
       <select value={size} id="size-dropdown" onChange={onChange}>
         <option value="small">Small</option>
         <option value="medium">Medium</option>
         <option value="large">Large</option>
         <option value="extra-large">Extra Large</option>
       </select>
-
-      <label>Toppings:</label>
+      <br />
+      <h2>Add Toppings:</h2>
+      <br />
       <section id="toppings">
+        <label>Pepperoni</label>
         <input
+          id="pepperoni"
           name="pepperoni"
           type="checkbox"
           onChange={onChange}
           checked={values.pepperoni}
         />
-        <label> Pepperoni </label>
-        <br />
+        <label>Veggies</label>
         <input
-          name="veggie"
+          id="veggies"
+          name="veggies"
           type="checkbox"
           onChange={onChange}
-          checked={values.veggie}
+          checked={values.veggies}
         />
-        <label>Veggies</label>
-        <br />
+        <label>Meat Lovers</label>
         <input
+          id="meat"
           name="meat"
           type="checkbox"
           onChange={onChange}
           checked={values.meat}
         />
-        <label>Meat Lovers</label>
+        <label>Pineapple</label>
         <input
+          id="pineapple"
           name="pineapple"
           type="checkbox"
           onChange={onChange}
           checked={values.pineapple}
         />
-        <label>Pineapple</label>
-        <input
-          type="checkbox"
-          name="gf"
-          onChange={onChange}
-          checked={values.pineapple}
-        />
         <label>Glutten Free:</label>
-        <br />
         <input
-          type="button"
-          name="gf"
           id="gf"
+          name="gf"
+          type="checkbox"
           onChange={onChange}
           checked={values.gf}
         />
-
-        <label>Special Instructions: </label>
+        <br />
+        <label>Special Instructions </label>
         <input
-          name="special"
           id="special-text"
+          name="special"
           onChange={onChange}
-          value={values.spacial}
+          checked={values.spacial}
           placeholder="Please enter your special request"
         />
-        <label>Submit!</label>
-        <button
-          type="input-name"
-          id="order-button"
-          value="submit"
-          button="true"
-          disabled={disabled}
-        ></button>
+        <br />
+        <button id="button" disabled={disabled}>
+          <span>Submit! </span>
+        </button>
       </section>
     </form>
   );

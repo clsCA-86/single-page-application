@@ -9,14 +9,14 @@ export default function OrderCard(props) {
         Pizza size: <strong>{order.size}</strong>
       </p>
       <div className="toppings">
-        {!order.cheese && <h4>Toppings:</h4>}
+        {!order.cheese && <h4>Toppings</h4>}
         {order.cheese && <p>Cheese</p>}
         {order.pepperoni && <p>Pepperoni</p>}
-        {order.veggie && <p>Veggie Massacre</p>}
-        {order.meat && <p>Meat Extravaganza</p>}
+        {order.veggies && <p>Veggies </p>}
+        {order.meat && <p>Meat </p>}
         {order.pineapple && <p>Pineapple</p>}
       </div>
-      {order.gf && <p>Gluten Free</p> }
+      {order.gf && <p>Gluten Free</p>}
       {!!order.special && (
         <p>
           Special Request: <br /> {order.special}

@@ -6,17 +6,17 @@
 }
 
 html {
-  background-color: #fff6f6;
+  background-color: #f0f8ff;
 }
 
 a,
 a:hover,
 a:visited {
   text-decoration: none;
-  color: black;
+  color: #262A2c;
   padding: 1%;
   margin: 1%;
-  background-color: #B22222;
+  background-color: #Ffa500;
   border-radius: 15px;
   width: 150px;
   color: #ffffff;
@@ -31,6 +31,7 @@ h1 {
   margin: 1%;
   font-size: 300%;
   margin-bottom: 3%;
+  color: #3399ff;
 }
 
 body {
@@ -55,11 +56,13 @@ h5 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: #9e2222;
+  background: linear-gradient(120grad, #643986, #98aed5);
   color: #ffffff;
   padding: 3%;
   text-align: start;
   width: 80%;
+  height: 80%;
+  position: center;
   margin: 0 auto;
 }
 
@@ -83,10 +86,10 @@ h5 {
 }
 
 #confirmation-page {
-  background-color: #9e2222;
+  background-color: #Ffa500;
   height: 100vh;
   padding: 2rem;
-  border-top: 5px solid #000000;
+  border-top: 5px solid #262A2c;
   color: #ffffff;
   display: flex;
   flex-wrap: wrap;
@@ -153,30 +156,106 @@ input {
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 3px;
-  border: 1px solid #777;
+  border: 1px solid #262A2c;
 }
 
 input.error {
-  border-color: red;
+  border-color: #ffffff;
 }
 
 .input-feedback {
-  color: rgb(235, 54, 54);
+  color: rgb(255, 165, 0);
   margin-top: -15px;
   font-size: 14px;
   margin-bottom: 20px;
 }
 
+/* .button { */
+/* position: absolute; */
+/* right: 350px; */
+/* bottom: -235px; */
+/* border: none; */
+/* box-shadow: none; */
+/* width: 130px; */
+/* height: 40px; */
+/* line-height: 42px; */
+/* -webkit-perspective: 230px; */
+/* perspective: 230px; */
+/* } */
+/*  */
+/* .button span { */
+/* background: rgb(255, 165, 0); */
+/* background: linear-gradient(0deg, */
+/* rgba(255, 165, 0) 0%, */
+/* rgba(255, 69, 0) 100%); */
+/* display: block; */
+/* position: absolute; */
+/* width: 130px; */
+/* height: 40px; */
+/* box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 5), 7px 7px, 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, .1); */
+/* border-radius: 5px; */
+/* margin: 0; */
+/* text-align: center; */
+/* -webkit-box-sizing: border-box; */
+/* -moz-box-sizing: border-box; */
+/* box-sizing: border-box; */
+/* -webkit-transition: all .3s; */
+/* transition: all .3s; */
+/* } */
+/*  */
+/* .button span:nt-child(1) { */
+/* box-shadow: */
+/* -7px -7px 20px 0px #fff9, */
+/* -4px -4px 5px 0px #fff9, */
+/* 7px 7px 20px 0px #0002, */
+/* 4px 4px 5px 0px #0001; */
+/* -webkit-transform: rotateX(90deg); */
+/* -moz-transform: rotateX(90deg); */
+/* transform: rotateX(90deg); */
+/* -webkit-transform-origin: 50% 50% -20px; */
+/* -moz-transform-origin: 50% 50% -20px; */
+/* transform-origin: 50% 50% -20px; */
+/* } */
+/*  */
+/* .button span:nth-child(2) { */
+/* -webkit-transform: rotateX(0deg); */
+/* -moz-transform: rotateX(0deg); */
+/* transform: rotateX(0deg); */
+/* -webkit-transform-origin: 50% 50% -20px; */
+/* -moz-transform-origin: 50% 50% -20px; */
+/* transform-origin: 50% 50% -20px; */
+/* } */
+/*  */
+/* .button:hover span:nth-child(1) { */
+/* box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), */
+/* 7px 7px 20px 0px rgba(0, 0, 0, .1), */
+/* 4px 4px 5px 0px rgba(0, 0, 0, .1); */
+/* -webkit-transform: rotateX(0deg); */
+/* -moz-transform: rotateX(0deg); */
+/* transform: rotateX(0deg); */
+/* } */
+/*  */
+/* .button:hover span:nth-child(2) { */
+/* box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), */
+/* 7px 7px 20px 0px rgba(0, 0, 0, .1), */
+/* 4px 4px 5px 0px rgba(0, 0, 0, .1); */
+/* color: transparent; */
+/* -webkit-transform: rotateX(-90deg); */
+/* -moz-transform: rotateX(-90deg); */
+/* transform: rotateX(-90deg); */
+/* } */
+
+
 button {
   padding: 10px 15px;
-  background-color: rgb(70, 153, 179);
-  color: white;
-  border: 1px solid rgb(70, 153, 179);
+  background-color: rgb(255, 165, 0);
+  color: #ffffff;
+  border: 1px solid rgb(255, 69, 0);
   transition: ease-in-out background-color 250ms, ease-in-out color 250ms;
 }
 
 button:hover {
   cursor: pointer;
-  background-color: white;
-  color: rgb(70, 153, 179);
+  background-color: #Ff4500;
+  color: rgb(255, 255, 255);
 }
