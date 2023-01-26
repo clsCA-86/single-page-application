@@ -3,7 +3,7 @@ import React from "react";
 export default function PizzaForm(props) {
   const { size, values, change, submit, errors, disabled } = props;
 
-  const onChange = (evt) => {
+  const changeHandler = (evt) => {
     const { name, checked, value, type } = evt.target;
     const wantValue = type === "checkbox" ? checked : value;
     change(name, wantValue);
@@ -11,30 +11,27 @@ export default function PizzaForm(props) {
 
   // focus on why that test gave me this error message
 
-  const onSubmit = (evt) => {
+  const SubmitHandler = (evt) => {
+    console.log("firedsubmit");
     evt.preventDefault();
     submit();
   };
 
   return (
-    <form id="pizza-form" onSubmit={onSubmit}>
-      {errors.fname && <h5>{errors.fname}</h5>}
+    <form onSubmit={SubmitHandler} id="pizza-form">
+      {errors.name && <h5>{errors.name}</h5>}
       <label>Enter Name:</label>
       <input
-        onChange={(evt) => {
-          console.log(evt.target.value);
-        }}
+        onChange={changeHandler}
         id="name-input"
         type="text"
-        name="fname"
-        value={values.fname}
+        name="name"
+        value={values.name}
         placeholder="Full Name"
       />
       <label>Email:</label>
       <input
-        onChange={(evt) => {
-          console.log(evt.target.value);
-        }}
+        onChange={changeHandler}
         id="email"
         type="text"
         name="email"
@@ -43,7 +40,7 @@ export default function PizzaForm(props) {
       />
       <br />
       <h2>Choose Pizza Size:</h2>
-      <select value={size} id="size-dropdown" onChange={onChange}>
+      <select value={size} id="size-dropdown" onChange={changeHandler}>
         <option value="small">Small</option>
         <option value="medium">Medium</option>
         <option value="large">Large</option>
@@ -58,7 +55,7 @@ export default function PizzaForm(props) {
           id="pepperoni"
           name="pepperoni"
           type="checkbox"
-          onChange={onChange}
+          onChange={changeHandler}
           checked={values.pepperoni}
         />
         <label>Veggies</label>
@@ -66,7 +63,7 @@ export default function PizzaForm(props) {
           id="veggies"
           name="veggies"
           type="checkbox"
-          onChange={onChange}
+          onChange={changeHandler}
           checked={values.veggies}
         />
         <label>Meat Lovers</label>
@@ -74,7 +71,7 @@ export default function PizzaForm(props) {
           id="meat"
           name="meat"
           type="checkbox"
-          onChange={onChange}
+          onChange={changeHandler}
           checked={values.meat}
         />
         <label>Pineapple</label>
@@ -82,7 +79,7 @@ export default function PizzaForm(props) {
           id="pineapple"
           name="pineapple"
           type="checkbox"
-          onChange={onChange}
+          onChange={changeHandler}
           checked={values.pineapple}
         />
         <label>Glutten Free:</label>
@@ -90,7 +87,7 @@ export default function PizzaForm(props) {
           id="gf"
           name="gf"
           type="checkbox"
-          onChange={onChange}
+          onChange={changeHandler}
           checked={values.gf}
         />
         <br />
@@ -98,12 +95,12 @@ export default function PizzaForm(props) {
         <input
           id="special-text"
           name="special"
-          onChange={onChange}
-          checked={values.spacial}
+          onChange={changeHandler}
+          checked={values.special}
           placeholder="Please enter your special request"
         />
         <br />
-        <button id="button" disabled={disabled}>
+        <button id="order-button" type="submit" disabled={false}>
           <span>Submit! </span>
         </button>
       </section>

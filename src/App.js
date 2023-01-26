@@ -17,6 +17,7 @@ const initialValues = {
   pineapple: false,
   gf: false,
   special: "",
+  email: "",
 };
 
 const initialErrors = {
@@ -39,13 +40,14 @@ const App = () => {
       .then(() => setErrors({ ...errors, [name]: "" }))
       .catch((err) => setErrors({ ...errors, [name]: err.errors[0] }));
   };
-
+  console.log(errors);
   const changeForm = (name, value) => {
     validatation(name, value);
     setOrderValues({ ...orderValues, [name]: value });
   };
 
   const submitForm = () => {
+    console.log("fired");
     const newOrder = {
       name: orderValues.name,
       size: orderValues.size,
@@ -67,11 +69,12 @@ const App = () => {
     axios
       .post("https://reqres.in/api/orders", newOrder)
       .then((res) => {
+        console.log(res);
         setOrders([...orders, res.data]);
+        history.push("/orders");
       })
       .catch((err) => console.error(err));
 
-    history.push("/orders");
     setOrderValues(initialValues);
   };
 
@@ -95,10 +98,10 @@ const App = () => {
 
       <Route path="/pizza">
         <PizzaForm
-          values={setOrderValues}
+          values={orderValues}
           change={changeForm}
           submit={submitForm}
-          errors={setErrors}
+          errors={errors}
           disabled={disabled}
         />
       </Route>
