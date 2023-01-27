@@ -100,7 +100,7 @@ export default function PizzaForm(props) {
           placeholder="Please enter your special request"
         />
         <br />
-        <button id="order-button" type="submit" disabled={false}>
+        <button id="order-button" type="submit" disabled={disabled}>
           <span>Submit! </span>
         </button>
       </section>
