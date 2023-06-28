@@ -82,7 +82,7 @@ export default function PizzaForm(props) {
           onChange={changeHandler}
           checked={values.pineapple}
         />
-        <label>Glutten Free:</label>
+        <label>Banana Pepper:</label>
         <input
           id="gf"
           name="gf"

@@ -85,7 +85,7 @@ const App = () => {
   return (
     <>
       <section id="header">
-        <h1>BloomTech Eats!</h1>
+        <h1>BloomTech Eatery!</h1>
         <Link to="/" name="header-Home">
           Home
         </Link>
